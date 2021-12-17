@@ -34,12 +34,12 @@ public class Nba {
 	private Date creation_date;
 	private Date closure_date;
 	private String category;
-	private String priority;
+	private Float priority;
 	private Float opportunity_value;
 	
 	public Nba(String nba_id, String order_id, String area, String nba_code, String aftersale_id,
 			String aftersale_categoryl, Float conversion_rate, Status status, String feedback, Date creation_date,
-			Date closure_date, String category, String priority, Float opportunity_value) {
+			Date closure_date, String category, Float priority, Float opportunity_value) {
 		super();
 		this.nba_id = nba_id;
 		this.order_id = order_id;
@@ -166,11 +166,11 @@ public class Nba {
 		this.category = category;
 	}
 
-	public String getPriority() {
+	public Float getPriority() {
 		return priority;
 	}
 
-	public void setPriority(String priority) {
+	public void setPriority(Float priority) {
 		this.priority = priority;
 	}
 
