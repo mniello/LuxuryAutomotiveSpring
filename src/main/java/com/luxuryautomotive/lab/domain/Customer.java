@@ -16,8 +16,8 @@ import lombok.Data;
 @Entity
 @Table
 @Data
-@NamedQueries(
-	@NamedQuery(name ="getCustomerByDealer", query = "select customer.* from customer,[order] where customer.customer_id = [order].customer_id and [order].dealer_email:=email")
+@NamedNativeQueries(
+	@NamedNativeQuery(name ="getCustomerByDealer", query = "select customer.* from customer,[order] where customer.customer_id = [order].customer_id and [order].dealer_email:=email", resultClass = Customer.class)
 )
 public class Customer {
 	
