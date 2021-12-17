@@ -2,6 +2,8 @@ package com.luxuryautomotive.lab.controllers;
 
 import java.util.List;
 
+import javax.persistence.PersistenceContext;
+
 import org.hibernate.Session;
 import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,7 @@ public class CustomerController {
 	@Autowired
 	private CustomerRepository customerRepository;
 
-	@Autowired
+	@PersistenceContext
 	Session session;
 	
 	@GetMapping("/getCustomerByDealer/{email}")
