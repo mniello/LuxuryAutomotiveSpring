@@ -1,6 +1,7 @@
 package com.luxuryautomotive.lab.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.PersistenceContext;
 
@@ -29,5 +30,11 @@ public class CustomerController {
 		NativeQuery query = session.getNamedNativeQuery("getCustomerByDealer");
 		query.setParameter("email", email);
 		return query.getResultList();
+	}
+
+	@GetMapping("/findDealerByEmail/{id}")
+	public Boolean findByEmail(@PathVariable String id) {
+		Optional<Customer> customer = customerRepository.findById(id);
+		return customer.isPresent();
 	}
 }
