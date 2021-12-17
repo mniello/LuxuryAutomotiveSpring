@@ -32,7 +32,7 @@ public class CustomerController {
 		return query.getResultList();
 	}
 
-	@GetMapping("/findDealerByEmail/{id}")
+	@GetMapping("/findCustomerByEmail/{id}")
 	public Boolean findByEmail(@PathVariable String id) {
 		Optional<Customer> customer = customerRepository.findById(id);
 		return customer.isPresent();
