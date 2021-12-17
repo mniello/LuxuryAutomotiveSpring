@@ -22,7 +22,6 @@ public class CustomerController {
 	@Autowired
 	private CustomerRepository customerRepository;
 
-	/*
 	@PersistenceContext
 	Session session;
 	
@@ -31,7 +30,7 @@ public class CustomerController {
 		NativeQuery query = session.getNamedNativeQuery("getCustomerByDealer");
 		query.setParameter("email", email);
 		return query.getResultList();
-	}*/
+	}
 
 	@GetMapping("/findCustomerByEmail/{id}")
 	public Boolean findByEmail(@PathVariable String id) {
