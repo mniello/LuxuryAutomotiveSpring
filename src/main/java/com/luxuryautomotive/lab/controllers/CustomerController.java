@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
 import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,12 +28,12 @@ public class CustomerController {
 	
 	@GetMapping("/getCustomerByDealer/{email}")
 	public List<Customer> getCustomerByDealer(@PathVariable String email) {
-		NativeQuery query = session.getNamedNativeQuery("getCustomerByDealer");
+		Query query = session.getNamedQuery("getCustomerByDealer");
 		query.setParameter("email", email);
 		return query.getResultList();
 	}
 
-	@GetMapping("/findCustomerByEmail/{id}")
+	@GetMapping("/findCustomerById/{id}")
 	public Boolean findByEmail(@PathVariable String id) {
 		Optional<Customer> customer = customerRepository.findById(id);
 		return customer.isPresent();
