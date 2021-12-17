@@ -17,7 +17,8 @@ import lombok.Data;
 @Table
 @Data
 @NamedNativeQueries(
-		@NamedNativeQuery(name ="findCustomerByDealer", query = "select [dbo].[customer].* from [dbo].[customer],[dbo].[order] where [dbo].[customer].customer_id = [dbo].[order].customer_id and [dbo].[order].dealer_email = 'aaddieq3@walmart.com'"))
+	@NamedNativeQuery(name ="getCustomerByDealer", query = "select [dbo].[customer].* from [dbo].[customer],[dbo].[order] where [dbo].[customer].customer_id = [dbo].[order].customer_id and [dbo].[order].dealer_email =: email")
+)
 public class Customer {
 	
 	public enum Rank{
