@@ -28,6 +28,4 @@ public class CustomerController {
 		query.setParameter("email", email);
 		return query.getResultList();
 	}
-	
-
 }
