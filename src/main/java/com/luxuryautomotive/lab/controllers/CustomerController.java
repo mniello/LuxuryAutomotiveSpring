@@ -22,7 +22,7 @@ public class CustomerController {
 	@Autowired
 	Session session;
 	
-	@GetMapping("/getCustomerByDealer/{dealer}")
+	@GetMapping("/getCustomerByDealer/{email}")
 	public List<Customer> getCustomerByDealer(@PathVariable String email) {
 		NativeQuery query = session.getNamedNativeQuery("getCustomerByDealer");
 		query.setParameter("email", email);
