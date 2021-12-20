@@ -21,11 +21,6 @@ import lombok.Data;
 )
 public class Customer {
 	
-	public enum Rank{
-		TOP,
-		VIP,
-		CUSTOMER
-		}
 	
 	@Id
 	private String customer_id;
@@ -37,11 +32,11 @@ public class Customer {
 	private String country;
 	private Date date_of_birth;
 	private String telephone_number;
-	private Rank customer_rank;
+	private String customer_rank;
 	
 	
 	public Customer(String customer_id, String customer_email, String first_name, String last_name, String city,
-			String region, String country, Date date_of_birth, String telephone_number, Rank customer_rank) {
+			String region, String country, Date date_of_birth, String telephone_number, String customer_rank) {
 		super();
 		this.customer_id = customer_id;
 		this.customer_email = customer_email;
@@ -160,12 +155,12 @@ public class Customer {
 	}
 
 
-	public Rank getCustomer_rank() {
+	public String getCustomer_rank() {
 		return customer_rank;
 	}
 
 
-	public void setCustomer_rank(Rank customer_rank) {
+	public void setCustomer_rank(String customer_rank) {
 		this.customer_rank = customer_rank;
 	}
 	
