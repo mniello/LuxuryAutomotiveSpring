@@ -29,28 +29,28 @@ public class Customer {
 	
 	@Id
 	private String customer_id;
-	private String customerEmail;
+	private String customer_email;
 	private String first_name;
 	private String last_name;
 	private String city;
 	private String region;
 	private String country;
-	private Date dateOfBirth;
+	private Date date_of_birth;
 	private String telephone_number;
 	private Rank customer_rank;
 	
 	
-	public Customer(String customer_id, String customerEmail, String first_name, String last_name, String city,
-			String region, String country, Date dateOfBirth, String telephone_number, Rank customer_rank) {
+	public Customer(String customer_id, String customer_email, String first_name, String last_name, String city,
+			String region, String country, Date date_of_birth, String telephone_number, Rank customer_rank) {
 		super();
 		this.customer_id = customer_id;
-		this.customerEmail = customerEmail;
+		this.customer_email = customer_email;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.city = city;
 		this.region = region;
 		this.country = country;
-		this.dateOfBirth = dateOfBirth;
+		this.date_of_birth = date_of_birth;
 		this.telephone_number = telephone_number;
 		this.customer_rank = customer_rank;
 	}
@@ -63,9 +63,9 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [customer_id=" + customer_id + ", customerEmail=" + customerEmail + ", first_name="
+		return "Customer [customer_id=" + customer_id + ", customer_email=" + customer_email + ", first_name="
 				+ first_name + ", last_name=" + last_name + ", city=" + city + ", region=" + region + ", country="
-				+ country + ", dateOfBirth=" + dateOfBirth + ", telephone_number=" + telephone_number
+				+ country + ", date_of_birth=" + date_of_birth + ", telephone_number=" + telephone_number
 				+ ", customer_rank=" + customer_rank + "]";
 	}
 
@@ -80,13 +80,13 @@ public class Customer {
 	}
 
 
-	public String getCustomerEmail() {
-		return customerEmail;
+	public String getCustomer_email() {
+		return customer_email;
 	}
 
 
-	public void setCustomerEmail(String customerEmail) {
-		this.customerEmail = customerEmail;
+	public void setCustomer_email(String customer_email) {
+		this.customer_email = customer_email;
 	}
 
 
@@ -140,13 +140,13 @@ public class Customer {
 	}
 
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
+	public Date getDate_of_birth() {
+		return date_of_birth;
 	}
 
 
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setDate_of_birth(Date date_of_birth) {
+		this.date_of_birth = date_of_birth;
 	}
 
 

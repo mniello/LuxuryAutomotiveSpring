@@ -37,10 +37,10 @@ public class CustomerController {
 	}
 
 	@PostMapping("/findCustomerById")
-	public Boolean findByEmail(@RequestBody String body) {
+	public Customer findByEmail(@RequestBody String body) {
 		JSONObject jsonObject = new JSONObject(body);
 		String id = jsonObject.getString("id");
-		Optional<Customer> customer = customerRepository.findById(id);
-		return customer.isPresent();
+		Customer customer = customerRepository.findById(id).orElseThrow();
+		return customer;
 	}
 }
