@@ -40,7 +40,8 @@ public class CustomerController {
 	public Customer findById(@RequestBody String body) {
 		JSONObject jsonObject = new JSONObject(body);
 		String id = jsonObject.getString("id");
-		Customer customer = customerRepository.findById(id).orElseThrow();
+		Customer customer = null;
+		customer = customerRepository.findById(id).get();
 		return customer;
 	}
 
