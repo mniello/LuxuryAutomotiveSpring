@@ -40,9 +40,10 @@ public class CustomerController {
 	public Customer findById(@RequestBody String body) {
 		JSONObject jsonObject = new JSONObject(body);
 		String id = jsonObject.getString("id");
-		Customer customer = null;
-		customer = customerRepository.findById(id).get();
-		return customer;
+		Optional<Customer> customer = customerRepository.findById(id);
+		if(customer.isPresent())
+			return customer.get();
+		return null;
 	}
 
 	@GetMapping("/getCustomerById/{id}")
