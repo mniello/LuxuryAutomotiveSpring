@@ -32,7 +32,7 @@ public class CustomerController {
 	
 	@GetMapping("/getCustomerByDealer/{email}")
 	public List<Customer> getCustomerByDealer(@PathVariable String email) {
-		TypedQuery query = session.getNamedNativeQuery("getCustomerByDealer");
+		TypedQuery query = session.createNamedQuery("getCustomerByDealer");
 		query.setParameter("email", email);
 		return query.getResultList();
 	}

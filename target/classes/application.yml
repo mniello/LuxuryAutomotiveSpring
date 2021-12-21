@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://luxuryserver.database.windows.net:1433;database=LuxuryDB;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    username: luxuryAD
+    password: password@*Emad2021
+  jpa:
+    show-sql: true
+  hibernate:
+    ddl-auto: update
+    dialect : org.hibernate.dialect.MySQL57Dialect
+
+server:
+  port: 9193
