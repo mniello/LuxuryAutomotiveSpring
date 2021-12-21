@@ -14,7 +14,7 @@ class LuxuryAutomotiveApplicationTests {
 
 	@Test
 	void contextLoads() {
-		controller.getCustomerByDealer("prova@email.com");
+		controller.getCustomerByDealer("aanderssone0@purevolume.com");
 	}
 
 }
