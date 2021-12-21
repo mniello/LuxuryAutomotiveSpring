@@ -6,19 +6,18 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 
 import lombok.Data;
 
 @Entity
 @Table
 @Data
-@NamedQueries(
-	@NamedQuery(name ="getCustomerByDealer", query = "select c from Customer c,Order o where c.customer_id = o.customer_id and o.dealer_email= :email")
+@NamedNativeQueries(
+	@NamedNativeQuery(name ="getCustomerByDealer", query = "select customer.* from customer,[order] where customer.customer_id = [order].customer_id and [order].dealer_email\\:=email", resultClass = Customer.class)
 )
 public class Customer {
 	
