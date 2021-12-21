@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table
+@Table(name = "`Order`")
 @Data
 public class Order {
 
