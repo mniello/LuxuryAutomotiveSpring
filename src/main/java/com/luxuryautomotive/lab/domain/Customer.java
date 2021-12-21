@@ -18,7 +18,7 @@ import lombok.Data;
 @Table
 @Data
 @NamedQueries(
-	@NamedQuery(name ="getCustomerByDealer", query = "select c from customer c,[order] o where c.customer_id = o.customer_id and o.dealer_email= :email")
+	@NamedQuery(name ="getCustomerByDealer", query = "select c from customer c,order o where c.customer_id = o.customer_id and o.dealer_email= :email")
 )
 public class Customer {
 	
