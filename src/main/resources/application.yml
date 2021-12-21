@@ -7,7 +7,7 @@ spring:
     show-sql: true
   hibernate:
     ddl-auto: update
-    dialect : org.hibernate.dialect.MySQL57Dialect
+    dialect : org.hibernate.dialect.MySQL57DialectS
 
 server:
   port: 9193
