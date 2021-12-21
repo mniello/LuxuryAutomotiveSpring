@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 import org.hibernate.query.NativeQuery;
@@ -31,7 +32,7 @@ public class CustomerController {
 	
 	@GetMapping("/getCustomerByDealer/{email}")
 	public List<Customer> getCustomerByDealer(@PathVariable String email) {
-		NativeQuery query = session.getNamedNativeQuery("getCustomerByDealer");
+		TypedQuery query = session.createNamedQuery("getCustomerByDealer",Customer.class);
 		query.setParameter("email", email);
 		return query.getResultList();
 	}
@@ -44,11 +45,5 @@ public class CustomerController {
 		if(customer.isPresent())
 			return customer.get();
 		return null;
-	}
-
-	@GetMapping("/getCustomerById/{id}")
-	public Boolean getById(@PathVariable String id) {
-		Optional<Customer> customer = customerRepository.findById(id);
-		return customer.isPresent();
 	}
 }
