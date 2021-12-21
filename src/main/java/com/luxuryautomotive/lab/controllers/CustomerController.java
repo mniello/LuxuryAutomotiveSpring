@@ -3,12 +3,13 @@ package com.luxuryautomotive.lab.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 import org.hibernate.query.NativeQuery;
-import org.hibernate.query.Query;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,12 +28,12 @@ public class CustomerController {
 	@Autowired
 	private CustomerRepository customerRepository;
 
-	@PersistenceContext
-	Session session;
+	@Autowired
+	EntityManager entityManager;
 	
 	@GetMapping("/getCustomerByDealer/{email}")
 	public List<Customer> getCustomerByDealer(@PathVariable String email) {
-		TypedQuery query = session.createNamedQuery("getCustomerByDealer");
+		Query query = entityManager.createNamedQuery("getCustomerByDealer");
 		query.setParameter("email", email);
 		return query.getResultList();
 	}
