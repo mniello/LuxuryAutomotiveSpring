@@ -2,8 +2,11 @@ package com.luxuryautomotive.lab.domain;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -11,15 +14,11 @@ import lombok.Data;
 @Entity
 @Table
 @Data
+@NamedQueries({
+	@NamedQuery(name ="getNbaByDealerCustomer", query = "select n from Nba n where exists(select o from Order o where o.order_id = n.order_id and o.dealer_email=:email and o.customer_id =:customer_id)"),
+	@NamedQuery(name ="getNbaByDealerCustomerStatus", query = "select n from Nba n where exists(select o from Order o where o.order_id = n.order_id and n.status=:status and o.dealer_email=:email and o.customer_id =:customer_id)")
+})
 public class Nba {
-	
-	public enum Status{
-		ACCEPTED,
-		REJCTED,
-		ACTIVE,
-		NOT_ACTIVE,
-		FINALIZED
-		}
 	
 	@Id
 	private String nba_id;
@@ -27,9 +26,10 @@ public class Nba {
 	private String area;
 	private String nba_code;
 	private String aftersale_id;
-	private String aftersale_categoryl;
+	private String aftersale_category;
 	private Float conversion_rate;
-	private Status status;
+	@Column(name = "status_")
+	private String status;
 	private String feedback;
 	private Date creation_date;
 	private Date closure_date;
@@ -38,7 +38,7 @@ public class Nba {
 	private Float opportunity_value;
 	
 	public Nba(String nba_id, String order_id, String area, String nba_code, String aftersale_id,
-			String aftersale_categoryl, Float conversion_rate, Status status, String feedback, Date creation_date,
+			String aftersale_category, Float conversion_rate, String status, String feedback, Date creation_date,
 			Date closure_date, String category, Float priority, Float opportunity_value) {
 		super();
 		this.nba_id = nba_id;
@@ -46,7 +46,7 @@ public class Nba {
 		this.area = area;
 		this.nba_code = nba_code;
 		this.aftersale_id = aftersale_id;
-		this.aftersale_categoryl = aftersale_categoryl;
+		this.aftersale_category = aftersale_category;
 		this.conversion_rate = conversion_rate;
 		this.status = status;
 		this.feedback = feedback;
@@ -64,7 +64,7 @@ public class Nba {
 	@Override
 	public String toString() {
 		return "Nba [nba_id=" + nba_id + ", order_id=" + order_id + ", area=" + area + ", nba_code=" + nba_code
-				+ ", aftersale_id=" + aftersale_id + ", aftersale_categoryl=" + aftersale_categoryl
+				+ ", aftersale_id=" + aftersale_id + ", aftersale_category=" + aftersale_category
 				+ ", conversion_rate=" + conversion_rate + ", status=" + status + ", feedback=" + feedback
 				+ ", creation_date=" + creation_date + ", closure_date=" + closure_date + ", category=" + category
 				+ ", priority=" + priority + ", opportunity_value=" + opportunity_value + "]";
@@ -110,12 +110,12 @@ public class Nba {
 		this.aftersale_id = aftersale_id;
 	}
 
-	public String getAftersale_categoryl() {
-		return aftersale_categoryl;
+	public String getAftersale_category() {
+		return aftersale_category;
 	}
 
-	public void setAftersale_categoryl(String aftersale_categoryl) {
-		this.aftersale_categoryl = aftersale_categoryl;
+	public void setAftersale_category(String aftersale_category) {
+		this.aftersale_category = aftersale_category;
 	}
 
 	public Float getConversion_rate() {
@@ -126,11 +126,11 @@ public class Nba {
 		this.conversion_rate = conversion_rate;
 	}
 
-	public Status getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
