@@ -26,9 +26,24 @@ public class NbaController {
 	
 	
 	//DA CAMBIARE
-	@GetMapping("/getAllNbaByDealer")
-	public List<Nba> findByDealer(String dealer_email){
-		return nbaRepository.findAll();
+	@PostMapping("/getNbaByDealer")
+	public List<Nba> getNbaByDealer(@RequestBody String body){
+		JSONObject jsonObject = new JSONObject(body);
+		String email = jsonObject.getString("email");
+		Query query = entityManager.createNamedQuery("getNbaByDealer");
+		query.setParameter("email", email);
+		return query.getResultList();
+	}
+
+	@PostMapping("/getNbaByDealerStatus")
+	public List<Nba> getNbaByDealerStatus(@RequestBody String body){
+		JSONObject jsonObject = new JSONObject(body);
+		String email = jsonObject.getString("email");
+		String status = jsonObject.getString("status");
+		Query query = entityManager.createNamedQuery("getNbaByDealerStatus");
+		query.setParameter("status", status);
+		query.setParameter("email", email);
+		return query.getResultList();
 	}
 
 	@PostMapping("/getNbaByDealerCustomer")
@@ -52,6 +67,19 @@ public class NbaController {
 		query.setParameter("email", email);
 		query.setParameter("customer_id", customer_id);
 		query.setParameter("status", status);
+		return query.getResultList();
+	}
+
+	@PostMapping("/getNbaByDealerCustomerCategory")
+	public List<Nba> getNbaByDealerCustomerCategory(@RequestBody String body) {
+		JSONObject jsonObject = new JSONObject(body);
+		String email = jsonObject.getString("email");
+		String customer_id = jsonObject.getString("customer_id");
+		String category = jsonObject.getString("category");
+		Query query = entityManager.createNamedQuery("getNbaByDealerCustomerCategory");
+		query.setParameter("email", email);
+		query.setParameter("customer_id", customer_id);
+		query.setParameter("category", category);
 		return query.getResultList();
 	}
 	

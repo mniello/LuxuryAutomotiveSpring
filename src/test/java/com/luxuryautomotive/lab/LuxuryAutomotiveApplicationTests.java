@@ -24,7 +24,8 @@ class LuxuryAutomotiveApplicationTests {
 		jsonObject.put("email", "aanderssone0@purevolume.com");
 		jsonObject.put("customer_id", "4");
 		jsonObject.put("status","FINALIZED");
-		System.out.println(nbaController.getNbaByDealerCustomerStatus(jsonObject.toString()));
+		jsonObject.put("category","NEW CAR SALE");
+		System.out.println(nbaController.getNbaByDealerCustomerCategory(jsonObject.toString()));
 	}
 
 }
