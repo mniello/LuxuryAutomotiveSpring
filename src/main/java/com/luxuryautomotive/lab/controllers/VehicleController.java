@@ -20,7 +20,7 @@ public class VehicleController {
 	@PostMapping("/getVehicleById")
 	public Vehicle getVehicleById(@RequestBody String body) {
 		JSONObject jsonObject = new JSONObject(body);
-		String id = jsonObject.getString("id");
+		String id = jsonObject.getString("vehicle_id");
 		Optional<Vehicle> vehicle = vehicleRepository.findById(id);
 		if(vehicle.isPresent())
 			return vehicle.get();

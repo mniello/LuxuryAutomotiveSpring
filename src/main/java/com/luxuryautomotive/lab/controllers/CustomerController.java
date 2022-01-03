@@ -41,7 +41,7 @@ public class CustomerController {
 	@PostMapping("/getCustomerById")
 	public Customer getCustomerById(@RequestBody String body) {
 		JSONObject jsonObject = new JSONObject(body);
-		String id = jsonObject.getString("id");
+		String id = jsonObject.getString("customer_id");
 		Optional<Customer> customer = customerRepository.findById(id);
 		if(customer.isPresent())
 			return customer.get();

@@ -27,7 +27,7 @@ public class OrderController {
 	@PostMapping("/getOrderById")
 	public Order getOrderById(@RequestBody String body) {
 		JSONObject jsonObject = new JSONObject(body);
-		String id = jsonObject.getString("id");
+		String id = jsonObject.getString("order_id");
 		Optional<Order> order = orderRepository.findById(id);
 		if(order.isPresent())
 			return order.get();
