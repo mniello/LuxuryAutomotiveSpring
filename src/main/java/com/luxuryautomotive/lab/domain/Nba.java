@@ -19,7 +19,8 @@ import lombok.Data;
 	@NamedQuery(name ="getNbaByDealer", query = "select n from Nba n, Order o where o.order_id = n.order_id and o.dealer_email=:email"),
 	@NamedQuery(name ="getNbaByDealerStatus", query = "select n from Nba n, Order o where o.order_id = n.order_id and n.status=:status and o.dealer_email=:email"),
 	@NamedQuery(name ="getNbaByDealerCustomerStatus", query = "select n from Nba n where exists(select o from Order o where o.order_id = n.order_id and n.status=:status and o.dealer_email=:email and o.customer_id =:customer_id)"),
-	@NamedQuery(name ="getNbaByDealerCustomerCategory", query = "select n from Nba n where exists(select o from Order o where o.order_id = n.order_id and n.category=:category and o.dealer_email=:email and o.customer_id =:customer_id)")
+	@NamedQuery(name ="getNbaByDealerCustomerCategory", query = "select n from Nba n where exists(select o from Order o where o.order_id = n.order_id and n.category=:category and o.dealer_email=:email and o.customer_id =:customer_id)"),
+	@NamedQuery(name ="getNbaByDealerCustomerCategoryStatus", query = "select n from Nba n where exists(select o from Order o where o.order_id = n.order_id and n.category=:category and o.dealer_email=:email and o.customer_id =:customer_id and n.status=:status)")
 })
 public class Nba {
 	
