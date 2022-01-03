@@ -38,8 +38,8 @@ public class CustomerController {
 		return query.getResultList();
 	}
 
-	@PostMapping("/findCustomerById")
-	public Customer findById(@RequestBody String body) {
+	@PostMapping("/getCustomerById")
+	public Customer getCustomerById(@RequestBody String body) {
 		JSONObject jsonObject = new JSONObject(body);
 		String id = jsonObject.getString("id");
 		Optional<Customer> customer = customerRepository.findById(id);
