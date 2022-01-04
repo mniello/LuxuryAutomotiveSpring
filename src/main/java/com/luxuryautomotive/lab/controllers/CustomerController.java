@@ -31,8 +31,10 @@ public class CustomerController {
 	@Autowired
 	EntityManager entityManager;
 	
-	@GetMapping("/getCustomerByDealer/{email}")
-	public List<Customer> getCustomerByDealer(@PathVariable String email) {
+	@PostMapping("/getCustomerByDealer")
+	public List<Customer> getCustomerByDealer(@RequestBody String body) {
+		JSONObject jsonObject = new JSONObject(body);
+		String email = jsonObject.getString("email");
 		Query query = entityManager.createNamedQuery("getCustomerByDealer");
 		query.setParameter("email", email);
 		return query.getResultList();
