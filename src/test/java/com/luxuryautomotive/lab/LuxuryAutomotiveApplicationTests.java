@@ -22,10 +22,10 @@ class LuxuryAutomotiveApplicationTests {
 	void contextLoads() throws JSONException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("email", "aanderssone0@purevolume.com");
-		jsonObject.put("customer_id", "4");
-		jsonObject.put("status","FINALIZED");
+		jsonObject.put("customer_id", "94");
+		jsonObject.put("status","ACTIVE");
 		jsonObject.put("category","NEW CAR SALE");
-		System.out.println(nbaController.getNbaByDealerCustomerCategory(jsonObject.toString()));
+		System.out.println(nbaController.getNbaByDealerCustomer(jsonObject.toString()));
 	}
 
 }
