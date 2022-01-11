@@ -15,44 +15,49 @@ public class Vehicle  {
 
 	@Id
 	private String vin;
-	private String order_id;
 	private String car_plate;
 	private String outfitting;
 	private Boolean ownership;
 	private Date start_ownership_date;
 	private Date end_ownership_date;
-	public Vehicle(String vin, String order_id, String car_plate, String outfitting, Boolean ownership,
-			Date start_ownership_date, Date end_ownership_date) {
+	private String model_id;
+
+	public Vehicle(String vin, String car_plate, String outfitting, Boolean ownership,
+			Date start_ownership_date, Date end_ownership_date, String model_id) {
 		super();
 		this.vin = vin;
-		this.order_id = order_id;
 		this.car_plate = car_plate;
 		this.outfitting = outfitting;
 		this.ownership = ownership;
 		this.start_ownership_date = start_ownership_date;
 		this.end_ownership_date = end_ownership_date;
+		this.model_id = model_id;
 	}
 	public Vehicle() {
 		super();
 	}
 	@Override
 	public String toString() {
-		return "Vehicle [vin=" + vin + ", order_id=" + order_id + ", car_plate=" + car_plate + ", outfitting="
+		return "Vehicle [vin=" + vin + ", car_plate=" + car_plate + ", outfitting="
 				+ outfitting + ", ownership=" + ownership + ", start_ownership_date=" + start_ownership_date
-				+ ", end_ownership_date=" + end_ownership_date + "]";
+				+ ", end_ownership_date=" + end_ownership_date +", model_id="+model_id+ "]";
 	}
+
+	public String getModel_id() {
+		return model_id;
+	}
+
+	public void setModel_id(String model_id) {
+		this.model_id = model_id;
+	}
+
 	public String getVin() {
 		return vin;
 	}
 	public void setVin(String vin) {
 		this.vin = vin;
 	}
-	public String getOrder_id() {
-		return order_id;
-	}
-	public void setOrder_id(String order_id) {
-		this.order_id = order_id;
-	}
+
 	public String getCar_plate() {
 		return car_plate;
 	}

@@ -13,18 +13,18 @@ public class VehicleModel {
 	
 	@Id
 	private String model_id;
-	private String vin;
 	private String model_name;
 	private String description;
 	private Integer year_of_release;
+	private String car_make;
 	
-	public VehicleModel(String model_id, String vin, String model_name, String description, Integer year_of_release) {
+	public VehicleModel(String model_id, String model_name, String description, Integer year_of_release, String car_make) {
 		super();
 		this.model_id = model_id;
-		this.vin = vin;
 		this.model_name = model_name;
 		this.description = description;
 		this.year_of_release = year_of_release;
+		this.car_make = car_make;
 	}
 
 	public VehicleModel() {
@@ -33,8 +33,16 @@ public class VehicleModel {
 
 	@Override
 	public String toString() {
-		return "VehicleModel [model_id=" + model_id + ", vin=" + vin + ", model_name=" + model_name + ", description="
-				+ description + ", year_of_release=" + year_of_release + "]";
+		return "VehicleModel [model_id=" + model_id + ", model_name=" + model_name + ", description="
+				+ description + ", year_of_release=" + year_of_release + ", car_make="+ car_make + "]";
+	}
+
+	public String getCar_make() {
+		return car_make;
+	}
+
+	public void setCar_make(String car_make) {
+		this.car_make = car_make;
 	}
 
 	public String getModel_id() {
@@ -43,14 +51,6 @@ public class VehicleModel {
 
 	public void setModel_id(String model_id) {
 		this.model_id = model_id;
-	}
-
-	public String getVin() {
-		return vin;
-	}
-
-	public void setVin(String vin) {
-		this.vin = vin;
 	}
 
 	public String getModel_name() {

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.luxuryautomotive.lab.domain.Warranty;
@@ -27,5 +28,9 @@ public class WarrantyController {
 		return null;
 	}
 	
+	@PostMapping("/findAllWarranty")
+	public List<Warranty> findAllWarranty() {
+		return warrantyRepository.findAll();
+	}
 
 }

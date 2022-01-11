@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.luxuryautomotive.lab.domain.Vehicle;
@@ -25,6 +26,11 @@ public class VehicleController {
 		if(vehicle.isPresent())
 			return vehicle.get();
 		return null;
+	}
+
+	@PostMapping("/findAllVehicle")
+	public List<Vehicle> findAllVehicle() {
+		return vehicleRepository.findAll();
 	}
 
 }

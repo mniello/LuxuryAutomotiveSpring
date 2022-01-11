@@ -28,9 +28,6 @@ public class Nba {
 	private String nba_id;
 	private String order_id;
 	private String area;
-	private String nba_code;
-	private String aftersale_id;
-	private String aftersale_category;
 	private Float conversion_rate;
 	@Column(name = "status_")
 	private String status;
@@ -41,16 +38,12 @@ public class Nba {
 	private Float priority;
 	private Float opportunity_value;
 	
-	public Nba(String nba_id, String order_id, String area, String nba_code, String aftersale_id,
-			String aftersale_category, Float conversion_rate, String status, String feedback, Date creation_date,
+	public Nba(String nba_id, String order_id, String area, Float conversion_rate, String status, String feedback, Date creation_date,
 			Date closure_date, String category, Float priority, Float opportunity_value) {
 		super();
 		this.nba_id = nba_id;
 		this.order_id = order_id;
 		this.area = area;
-		this.nba_code = nba_code;
-		this.aftersale_id = aftersale_id;
-		this.aftersale_category = aftersale_category;
 		this.conversion_rate = conversion_rate;
 		this.status = status;
 		this.feedback = feedback;
@@ -67,9 +60,7 @@ public class Nba {
 
 	@Override
 	public String toString() {
-		return "Nba [nba_id=" + nba_id + ", order_id=" + order_id + ", area=" + area + ", nba_code=" + nba_code
-				+ ", aftersale_id=" + aftersale_id + ", aftersale_category=" + aftersale_category
-				+ ", conversion_rate=" + conversion_rate + ", status=" + status + ", feedback=" + feedback
+		return "Nba [nba_id=" + nba_id + ", order_id=" + order_id + ", area=" + area + ", aftersale_category=" + conversion_rate + ", status=" + status + ", feedback=" + feedback
 				+ ", creation_date=" + creation_date + ", closure_date=" + closure_date + ", category=" + category
 				+ ", priority=" + priority + ", opportunity_value=" + opportunity_value + "]";
 	}
@@ -96,30 +87,6 @@ public class Nba {
 
 	public void setArea(String area) {
 		this.area = area;
-	}
-
-	public String getNba_code() {
-		return nba_code;
-	}
-
-	public void setNba_code(String nba_code) {
-		this.nba_code = nba_code;
-	}
-
-	public String getAftersale_id() {
-		return aftersale_id;
-	}
-
-	public void setAftersale_id(String aftersale_id) {
-		this.aftersale_id = aftersale_id;
-	}
-
-	public String getAftersale_category() {
-		return aftersale_category;
-	}
-
-	public void setAftersale_category(String aftersale_category) {
-		this.aftersale_category = aftersale_category;
 	}
 
 	public Float getConversion_rate() {

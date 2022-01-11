@@ -96,5 +96,10 @@ public class NbaController {
 		query.setParameter("status", status);
 		return query.getResultList();
 	}
+
+	@PostMapping("/findAllNba")
+	public List<Nba> findAllNba() {
+		return nbaRepository.findAll();
+	}
 	
 }

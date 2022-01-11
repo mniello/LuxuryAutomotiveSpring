@@ -17,16 +17,16 @@ public class Optional {
 	private String optional_id;
 	private String model_id;
 	private String description;
-	private String caregory;
+	private String category;
 	private Float price;
 	private Date purchase_date;
-	public Optional(String optional_id, String model_id, String description, String caregory, Float price,
+	public Optional(String optional_id, String model_id, String description, String category, Float price,
 			Date purchase_date) {
 		super();
 		this.optional_id = optional_id;
 		this.model_id = model_id;
 		this.description = description;
-		this.caregory = caregory;
+		this.category = category;
 		this.price = price;
 		this.purchase_date = purchase_date;
 	}
@@ -36,7 +36,7 @@ public class Optional {
 	@Override
 	public String toString() {
 		return "Optional [optional_id=" + optional_id + ", model_id=" + model_id + ", description=" + description
-				+ ", caregory=" + caregory + ", price=" + price + ", purchase_date=" + purchase_date + "]";
+				+ ", caregory=" + category + ", price=" + price + ", purchase_date=" + purchase_date + "]";
 	}
 	public String getOptional_id() {
 		return optional_id;
@@ -56,11 +56,11 @@ public class Optional {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getCaregory() {
-		return caregory;
+	public String getCategory() {
+		return category;
 	}
-	public void setCaregory(String caregory) {
-		this.caregory = caregory;
+	public void setCategory(String caregory) {
+		this.category = caregory;
 	}
 	public Float getPrice() {
 		return price;

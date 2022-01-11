@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -11,6 +13,9 @@ import lombok.Data;
 @Entity
 @Table(name="order_")
 @Data
+@NamedQueries({
+	@NamedQuery(name ="getOrderByDealer", query = "select o from Order o where o.dealer_email=:email"),
+})
 public class Order {
 
 	@Id
@@ -20,10 +25,12 @@ public class Order {
 	private String order_type;
 	private Date date;
 	private float price;
+	private String payment_type;
+	private String vin;
 	
 	
 	public Order(String order_id, String customer_id, String dealer_email, String order_type, Date date,
-			float price) {
+			float price, String payment_type , String vin) {
 		super();
 		this.order_id = order_id;
 		this.customer_id = customer_id;
@@ -31,6 +38,8 @@ public class Order {
 		this.order_type = order_type;
 		this.date = date;
 		this.price = price;
+		this.payment_type = payment_type;
+		this.vin = vin;
 	}
 
 
@@ -42,9 +51,25 @@ public class Order {
 	@Override
 	public String toString() {
 		return "Order [order_id=" + order_id + ", customer_id=" + customer_id + ", dealer_email=" + dealer_email
-				+ ", order_type=" + order_type + ", date=" + date + ", price=" + price + "]";
+				+ ", order_type=" + order_type + ", date=" + date + ", price=" + price + ", payment_type="+ payment_type+ ", vin="+vin + "]" ;
 	}
 
+
+	public String getVin() {
+		return vin;
+	}
+
+	public void setVin(String vin) {
+		this.vin = vin;
+	}
+
+	public String getPayment_type() {
+		return payment_type;
+	}
+
+	public void setPayment_type(String payment_type) {
+		this.payment_type = payment_type;
+	}
 
 	public String getOrder_id() {
 		return order_id;

@@ -1,5 +1,6 @@
 package com.luxuryautomotive.lab.controllers;
 
+import java.util.List;
 import java.util.Optional;
 import org.json.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,11 @@ public class DealerController {
 				return dealer2;
 		}
 		return null;	
+	}
+
+	@PostMapping("/findAllDealer")
+	public List<Dealer> findAllDealer() {
+		return dealerRepository.findAll();
 	}
 
 }

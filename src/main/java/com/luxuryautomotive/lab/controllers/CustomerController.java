@@ -49,4 +49,9 @@ public class CustomerController {
 			return customer.get();
 		return null;
 	}
+
+	@PostMapping("/findAllCustomer")
+	public List<Customer> findAllCustomer() {
+		return customerRepository.findAll();
+	}
 }
