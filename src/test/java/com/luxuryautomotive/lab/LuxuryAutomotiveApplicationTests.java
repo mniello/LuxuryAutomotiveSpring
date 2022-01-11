@@ -25,7 +25,7 @@ class LuxuryAutomotiveApplicationTests {
 	@Test
 	void contextLoads() throws JSONException {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("email", "aanderssone0@purevolume.com");
+		jsonObject.put("dealer_email", "aanderssone0@purevolume.com");
 		jsonObject.put("customer_id", "94");
 		jsonObject.put("status","ACTIVE");
 		jsonObject.put("category","NEW CAR SALE");
