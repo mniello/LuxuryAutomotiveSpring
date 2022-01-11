@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -11,6 +13,9 @@ import lombok.Data;
 @Entity
 @Table
 @Data
+@NamedQueries({
+	@NamedQuery(name ="getOptionalByModelId", query = "select o from Optional o where o.model_id=:model"),
+})
 public class Optional {
 
 	@Id

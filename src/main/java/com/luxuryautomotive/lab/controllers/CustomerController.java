@@ -34,7 +34,7 @@ public class CustomerController {
 	@PostMapping("/getCustomerByDealer")
 	public List<Customer> getCustomerByDealer(@RequestBody String body) {
 		JSONObject jsonObject = new JSONObject(body);
-		String email = jsonObject.getString("email");
+		String email = jsonObject.getString("dealer_email");
 		Query query = entityManager.createNamedQuery("getCustomerByDealer");
 		query.setParameter("email", email);
 		return query.getResultList();

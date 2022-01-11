@@ -2,6 +2,7 @@ package com.luxuryautomotive.lab;
 
 import com.luxuryautomotive.lab.controllers.CustomerController;
 import com.luxuryautomotive.lab.controllers.NbaController;
+import com.luxuryautomotive.lab.controllers.OptionalController;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,6 +19,9 @@ class LuxuryAutomotiveApplicationTests {
 	@Autowired
 	NbaController nbaController;
 
+	@Autowired 
+	OptionalController optionalController;
+
 	@Test
 	void contextLoads() throws JSONException {
 		JSONObject jsonObject = new JSONObject();
@@ -27,5 +31,6 @@ class LuxuryAutomotiveApplicationTests {
 		jsonObject.put("category","NEW CAR SALE");
 		System.out.println(nbaController.getNbaByDealerCustomer(jsonObject.toString()));
 	}
+
 
 }

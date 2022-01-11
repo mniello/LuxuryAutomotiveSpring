@@ -28,7 +28,7 @@ public class NbaController {
 	@PostMapping("/getNbaByDealer")
 	public List<Nba> getNbaByDealer(@RequestBody String body){
 		JSONObject jsonObject = new JSONObject(body);
-		String email = jsonObject.getString("email");
+		String email = jsonObject.getString("dealer_email");
 		Query query = entityManager.createNamedQuery("getNbaByDealer");
 		query.setParameter("email", email);
 		return query.getResultList();
@@ -37,7 +37,7 @@ public class NbaController {
 	@PostMapping("/getNbaByDealerStatus")
 	public List<Nba> getNbaByDealerStatus(@RequestBody String body){
 		JSONObject jsonObject = new JSONObject(body);
-		String email = jsonObject.getString("email");
+		String email = jsonObject.getString("dealer_email");
 		String status = jsonObject.getString("status");
 		Query query = entityManager.createNamedQuery("getNbaByDealerStatus");
 		query.setParameter("status", status);
@@ -48,7 +48,7 @@ public class NbaController {
 	@PostMapping("/getNbaByDealerCustomer")
 	public List<Nba> getNbaByDealerCustomer(@RequestBody String body) {
 		JSONObject jsonObject = new JSONObject(body);
-		String email = jsonObject.getString("email");
+		String email = jsonObject.getString("dealer_email");
 		String customer_id = jsonObject.getString("customer_id");
 		Query query = entityManager.createNamedQuery("getNbaByDealerCustomer");
 		query.setParameter("email", email);
@@ -59,7 +59,7 @@ public class NbaController {
 	@PostMapping("/getNbaByDealerCustomerStatus")
 	public List<Nba> getNbaByDealerCustomerStatus(@RequestBody String body) {
 		JSONObject jsonObject = new JSONObject(body);
-		String email = jsonObject.getString("email");
+		String email = jsonObject.getString("dealer_email");
 		String customer_id = jsonObject.getString("customer_id");
 		String status = jsonObject.getString("status");
 		Query query = entityManager.createNamedQuery("getNbaByDealerCustomerStatus");
@@ -72,7 +72,7 @@ public class NbaController {
 	@PostMapping("/getNbaByDealerCustomerCategory")
 	public List<Nba> getNbaByDealerCustomerCategory(@RequestBody String body) {
 		JSONObject jsonObject = new JSONObject(body);
-		String email = jsonObject.getString("email");
+		String email = jsonObject.getString("dealer_email");
 		String customer_id = jsonObject.getString("customer_id");
 		String category = jsonObject.getString("category");
 		Query query = entityManager.createNamedQuery("getNbaByDealerCustomerCategory");
@@ -85,7 +85,7 @@ public class NbaController {
 	@PostMapping("/getNbaByDealerCustomerCategoryStatus")
 	public List<Nba> getNbaByDealerCustomerCategoryStatus(@RequestBody String body) {
 		JSONObject jsonObject = new JSONObject(body);
-		String email = jsonObject.getString("email");
+		String email = jsonObject.getString("dealer_email");
 		String customer_id = jsonObject.getString("customer_id");
 		String category = jsonObject.getString("category");
 		String status = jsonObject.getString("status");

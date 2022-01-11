@@ -21,7 +21,7 @@ public class DealerController {
 	@Autowired
 	private DealerRepository dealerRepository;
 	
-	@GetMapping("/findDealerByEmail/{email}")
+	@GetMapping("/findDealerByEmail/{dealer_email}")
 	public Boolean findByEmail(@PathVariable String email) {
 		Optional<Dealer> dealer = dealerRepository.findById(email);
 		return dealer.isPresent();
@@ -30,7 +30,7 @@ public class DealerController {
 	@PostMapping("/login")
 	public Dealer findPassword(@RequestBody String body ) {
 		JSONObject jsonObject = new JSONObject(body);
-		String email = jsonObject.getString("email");
+		String email = jsonObject.getString("dealer_email");
 		String password = jsonObject.getString("password");
 		Optional<Dealer> dealer = dealerRepository.findById(email);
 		Dealer dealer2;

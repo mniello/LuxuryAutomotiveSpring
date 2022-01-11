@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import com.luxuryautomotive.lab.domain.Warranty;
 import com.luxuryautomotive.lab.repositories.WarrantyRepository;
 
@@ -17,6 +20,8 @@ public class WarrantyController {
 	
 	@Autowired
 	private WarrantyRepository warrantyRepository;
+
+	@Autowired EntityManager entityManager;
 
 	@PostMapping("/getWarrantyById")
 	public Warranty getVehicleById(@RequestBody String body) {
@@ -31,6 +36,15 @@ public class WarrantyController {
 	@PostMapping("/findAllWarranty")
 	public List<Warranty> findAllWarranty() {
 		return warrantyRepository.findAll();
+	}
+
+	@PostMapping("/getWarrantyByOrder")
+	public List<Warranty> getWarrantyByOrder(@RequestBody String body) {
+		JSONObject jsonObject = new JSONObject(body);
+		String order_id = jsonObject.getString("order_id");
+		Query query = entityManager.createNamedQuery("getWarrantyByOrder");
+		query.setParameter("id", order_id);
+		return query.getResultList();
 	}
 
 }

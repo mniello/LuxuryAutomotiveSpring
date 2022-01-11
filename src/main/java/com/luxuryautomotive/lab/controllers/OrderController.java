@@ -55,4 +55,23 @@ public class OrderController {
 		return orderRepository.findAll();
 	}
 
+	@PostMapping("/getOrderByCustomer")
+	public List<Order> getOrderByCustomer(@RequestBody String body) {
+		JSONObject jsonObject = new JSONObject(body);
+		String id = jsonObject.getString("customer_id");
+		Query query = entityManager.createNamedQuery("getOrderByCustomer");
+		query.setParameter("id", id);
+		return query.getResultList();
+	}
+
+	@PostMapping("/getOrderByVehicle")
+	public List<Order> getOrderByVehicle(@RequestBody String body) {
+		JSONObject jsonObject = new JSONObject(body);
+		String vin = jsonObject.getString("vin");
+		Query query = entityManager.createNamedQuery("getOrderByVehicle");
+		query.setParameter("vin", vin);
+		return query.getResultList();
+	}
+
+
 }

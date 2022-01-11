@@ -15,6 +15,8 @@ import lombok.Data;
 @Data
 @NamedQueries({
 	@NamedQuery(name ="getOrderByDealer", query = "select o from Order o where o.dealer_email=:email"),
+	@NamedQuery(name ="getOrderByCustomer", query = "select o from Order o where o.customer_id=:id"),
+	@NamedQuery(name ="getOrderByVehicle", query = "select o from Order o where o.vin=:vin")
 })
 public class Order {
 
