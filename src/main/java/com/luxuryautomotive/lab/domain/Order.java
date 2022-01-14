@@ -17,7 +17,7 @@ import lombok.Data;
 	@NamedQuery(name ="getOrderByDealer", query = "select o from Order o where o.dealer_email=:email"),
 	@NamedQuery(name ="getOrderByCustomer", query = "select o from Order o where o.customer_id=:id"),
 	@NamedQuery(name ="getOrderByVehicle", query = "select o from Order o where o.vin=:vin"),
-	@NamedQuery(name = "getOrderByCustomerForLastWarranty", query = "select o.order_id from Order where o.customer_id=:id and o.order_type=:order_type ORDER BY o.date DESC")
+	@NamedQuery(name = "getOrderByCustomerForLastWarranty", query = "select o.order_id from Order o where o.customer_id=:id and o.order_type=:order_type ORDER BY o.date DESC")
 })
 public class Order {
 
