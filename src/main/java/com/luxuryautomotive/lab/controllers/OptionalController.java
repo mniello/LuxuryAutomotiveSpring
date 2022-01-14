@@ -28,12 +28,12 @@ public class OptionalController {
 		return optionalRepository.findAll();
 	}
 
-	@PostMapping("/getOptionalByModelId")
-	public List<Optional> getOptionalByModelId(@RequestBody String body) {
+	@PostMapping("/getOptionalByVin")
+	public List<Optional> getOptionalByVin(@RequestBody String body) {
 		JSONObject jsonObject = new JSONObject(body);
-		String model_id = jsonObject.getString("model_id");
-		Query query = entityManager.createNamedQuery("getOptionalByModelId");
-		query.setParameter("model", model_id);
+		String vin = jsonObject.getString("vin");
+		Query query = entityManager.createNamedQuery("getOptionalByVin");
+		query.setParameter("vin", vin);
 		return query.getResultList();
 	}
 }

@@ -14,22 +14,22 @@ import lombok.Data;
 @Table
 @Data
 @NamedQueries({
-	@NamedQuery(name ="getOptionalByModelId", query = "select o from Optional o where o.model_id=:model"),
+	@NamedQuery(name ="getOptionalByVin", query = "select o from Optional o where o.vin=:vin"),
 })
 public class Optional {
 
 	@Id
 	private String optional_id;
-	private String model_id;
+	private String vin;
 	private String description;
 	private String category;
 	private Float price;
 	private Date purchase_date;
-	public Optional(String optional_id, String model_id, String description, String category, Float price,
+	public Optional(String optional_id, String vin, String description, String category, Float price,
 			Date purchase_date) {
 		super();
 		this.optional_id = optional_id;
-		this.model_id = model_id;
+		this.vin = vin;
 		this.description = description;
 		this.category = category;
 		this.price = price;
@@ -40,7 +40,7 @@ public class Optional {
 	}
 	@Override
 	public String toString() {
-		return "Optional [optional_id=" + optional_id + ", model_id=" + model_id + ", description=" + description
+		return "Optional [optional_id=" + optional_id + ", vin=" + vin + ", description=" + description
 				+ ", caregory=" + category + ", price=" + price + ", purchase_date=" + purchase_date + "]";
 	}
 	public String getOptional_id() {
@@ -49,11 +49,11 @@ public class Optional {
 	public void setOptional_id(String optional_id) {
 		this.optional_id = optional_id;
 	}
-	public String getModel_id() {
-		return model_id;
+	public String getVin() {
+		return vin;
 	}
-	public void setModel_id(String model_id) {
-		this.model_id = model_id;
+	public void setVin(String vin) {
+		this.vin = vin;
 	}
 	public String getDescription() {
 		return description;

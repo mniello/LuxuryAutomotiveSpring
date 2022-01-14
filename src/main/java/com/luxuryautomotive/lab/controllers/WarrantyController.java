@@ -24,7 +24,7 @@ public class WarrantyController {
 	@Autowired EntityManager entityManager;
 
 	@PostMapping("/getWarrantyById")
-	public Warranty getVehicleById(@RequestBody String body) {
+	public Warranty getWarrantyById(@RequestBody String body) {
 		JSONObject jsonObject = new JSONObject(body);
 		String id = jsonObject.getString("warranty_id");
 		Optional<Warranty> warranty = warrantyRepository.findById(id);
