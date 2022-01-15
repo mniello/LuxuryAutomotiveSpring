@@ -15,6 +15,7 @@ import lombok.Data;
 @Data
 @NamedQueries({
 	@NamedQuery(name ="getWarrantyByOrder", query = "select w from Warranty w where w.order_id=:id"),
+	@NamedQuery(name ="getLastWarrantyByCustomer", query = "select w from Warranty w , Order o  where w.order_id = o.order_id and o.customer_id=:id and w.start_date is not null ORDER BY w.start_date DESC")
 })
 public class Warranty {
 	

@@ -15,6 +15,9 @@ import lombok.Data;
 @Data
 @NamedQueries({
 	@NamedQuery(name ="getOptionalByVin", query = "select o from Optional o where o.vin=:vin"),
+	@NamedQuery(name ="getLastOptionalByCustomer", query = "select op from Optional op where exists(select v.vin from Vehicle v , Order ord where  op.vin = ord.vin and v.vin = ord.vin and ord.customer_id=:id and ord.order_type=:order_type) order by op.purchase_date desc  "),
+	//@NamedQuery(name = "getMaxOptionalByRankCustomer", query = "select max(media.num) as media from (select op.category ,count(op.category) as num from Optional op where exists(select v.vin from Vehicle v , Order ord , Customer c where ord.vin = v.vin and ord.customer_id = c.customer_id and c.customer_rank=:rank and ord.order_type=:order_type)group by op.category) as media"),
+	//@NamedQuery(name = "getOptionalCategoryByRankCustomer",query = "select op.category ,count(op.category) as num from Optional op where exists(select v.vin from Vehicle v , Order ord , Customer c where ord.vin = v.vin and ord.customer_id = c.customer_id and c.customer_rank=:rank and ord.order_type=:order_type) and num:=max group by op.category"),
 })
 public class Optional {
 
