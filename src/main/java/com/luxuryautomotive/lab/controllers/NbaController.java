@@ -101,5 +101,12 @@ public class NbaController {
 	public List<Nba> findAllNba() {
 		return nbaRepository.findAll();
 	}
+
+	@PostMapping("/getNbaByid")
+	public Nba getNbaByid(@RequestBody String body) {
+		JSONObject jsonObject = new JSONObject(body);
+		String id = jsonObject.getString("nba_id");
+		return nbaRepository.getById(id);
+	}
 	
 }
