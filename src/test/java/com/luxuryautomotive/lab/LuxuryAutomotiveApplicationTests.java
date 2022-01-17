@@ -30,11 +30,11 @@ class LuxuryAutomotiveApplicationTests {
 	@Test
 	void contextLoads() throws JSONException {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("customer_id", "1");
+		jsonObject.put("model_id", "1");
 		//jsonObject.put("customer_id", "94");
 		//jsonObject.put("status","ACTIVE");
 		//jsonObject.put("category","NEW CAR SALE");
-		System.out.println(ruleEngineController.getLastWarranty(jsonObject.toString()));
+		System.out.println(ruleEngineController.getOptionalByModelId(jsonObject.toString()));
 	}
 
 

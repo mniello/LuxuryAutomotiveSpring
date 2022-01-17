@@ -80,7 +80,7 @@ public class RuleEngineController {
     {
         JSONObject jsonObject = new JSONObject(body);
         String model_id = jsonObject.getString("model_id");
-        Query query = entityManager.createNativeQuery("select category   from [dbo].[optional] where vin in (select vin from [dbo].[vehicle_model], [dbo].[vehicle] where [dbo].[vehicle].model_id = [dbo].[vehicle_model].model_id and [dbo].[vehicle_model].model_id=:model_id) group by category");
+        Query query = entityManager.createNativeQuery("select nuova.category from (select top 3 category ,count(category) as num from [dbo].[optional] where vin in (select vin from [dbo].[vehicle_model], [dbo].[vehicle] where [dbo].[vehicle].model_id = [dbo].[vehicle_model].model_id and [dbo].[vehicle_model].model_id=:model_id) group by category order by num DESC) as nuova ");
         query.setParameter("model_id", model_id);
         return query.getResultList();
     }
