@@ -74,5 +74,15 @@ public class RuleEngineController {
         return duration;
 
     }
+
+    @PostMapping("/getOptionalByModelId")
+    public List<String> getOptionalByModelId(@RequestBody String body)
+    {
+        JSONObject jsonObject = new JSONObject(body);
+        String model_id = jsonObject.getString("model_id");
+        Query query = entityManager.createNativeQuery("select category   from [dbo].[optional] where vin in (select vin from [dbo].[vehicle_model], [dbo].[vehicle] where [dbo].[vehicle].model_id = [dbo].[vehicle_model].model_id and [dbo].[vehicle_model].model_id=:model_id) group by category");
+        query.setParameter("model_id", model_id);
+        return query.getResultList();
+    }
     
 }
