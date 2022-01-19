@@ -21,6 +21,7 @@ import lombok.Data;
 	@NamedQuery(name ="getNbaByDealerCustomerStatus", query = "select n from Nba n where exists(select o from Order o where o.order_id = n.order_id and n.status=:status and o.dealer_email=:email and o.customer_id =:customer_id) ORDER BY n.conversion_rate DESC"),
 	@NamedQuery(name ="getNbaByDealerCustomerCategory", query = "select n from Nba n where exists(select o from Order o where o.order_id = n.order_id and n.category=:category and o.dealer_email=:email and o.customer_id =:customer_id) ORDER BY n.conversion_rate DESC"),
 	@NamedQuery(name ="getNbaByDealerCustomerCategoryStatus", query = "select n from Nba n where exists(select o from Order o where o.order_id = n.order_id and n.category=:category and o.dealer_email=:email and o.customer_id =:customer_id and n.status=:status) ORDER BY n.conversion_rate DESC"),
+	@NamedQuery(name ="getNbaById", query="select n from Nba n where n.nba_id=:nba_id"),
 })
 public class Nba {
 	

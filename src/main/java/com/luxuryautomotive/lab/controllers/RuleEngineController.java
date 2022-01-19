@@ -1,5 +1,7 @@
 package com.luxuryautomotive.lab.controllers;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,8 +9,11 @@ import javax.persistence.Query;
 
 import com.luxuryautomotive.lab.domain.Nba;
 import com.luxuryautomotive.lab.domain.Optional;
+import com.luxuryautomotive.lab.domain.Order;
+import com.luxuryautomotive.lab.domain.Vehicle;
 import com.luxuryautomotive.lab.domain.Warranty;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,9 +34,6 @@ public class RuleEngineController {
 
     @Autowired
     NbaController nbaController;
-
-    @Autowired
-    OrderController orderController;
 
     @PostMapping("/getLastWarrantyByCustomer")
     public Warranty getLastWarranty(@RequestBody String body) {
@@ -101,16 +103,6 @@ public class RuleEngineController {
     }
 
 
-    @PostMapping("/finalizeNbaWithOptional")
-    public boolean finalizeNbaWithOptional(@RequestBody String body) {
-        JSONObject jsonObject = new JSONObject(body);
-        String nba_id = jsonObject.getString("nba_id");
-        JSONObject jsonObject2 = new JSONObject();
-        jsonObject2.put("nba_id", nba_id);
-        Nba nba = nbaController.getNbaByid(jsonObject2.toString());
-        nba.setStatus("FINALIZED");
-        //nba.setClosure_date(new Date());
-        return true;
-    }
+    
     
 }
