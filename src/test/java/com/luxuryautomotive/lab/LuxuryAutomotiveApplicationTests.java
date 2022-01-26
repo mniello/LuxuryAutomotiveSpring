@@ -33,6 +33,7 @@ class LuxuryAutomotiveApplicationTests {
 	@Test
 	void contextLoads() throws JSONException {
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("customer_rank", "VIP");
 		jsonObject.put("nba_id", "101");
 		jsonObject.put("payment_type","CREDIT CARD");
 		jsonObject.put("month", "18");
@@ -44,7 +45,7 @@ class LuxuryAutomotiveApplicationTests {
 		jsonObject.put("customer_id", "1");
 		//jsonObject.put("status","ACTIVE");
 		//jsonObject.put("category","NEW CAR SALE");
-		//System.out.println(ruleEngineController.getLastWarranty(jsonObject.toString()));
+		//System.out.println(ruleEngineController.getTop3WarrantyDurationByRankCustomer(jsonObject.toString()));
 	}
 
 

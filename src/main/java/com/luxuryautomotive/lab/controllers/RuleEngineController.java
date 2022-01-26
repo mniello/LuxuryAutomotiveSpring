@@ -85,6 +85,16 @@ public class RuleEngineController {
 
     }
 
+    @PostMapping("/getTop3WarrantyDurationByRankCustomer")
+    public List<Integer> getTop3WarrantyDurationByRankCustomer(@RequestBody String body) {
+        JSONObject jsonObject = new JSONObject(body);
+        String rank = jsonObject.getString("customer_rank");
+        Query query = entityManager.createNativeQuery("select tabella.durata from(select top 3 nuova.durata , count(nuova.durata) as num  from(SELECT DATEDIFF(month,start_date,end_date) as durata  from [dbo].[warranty] , [dbo].[order_] , [dbo].[customer] where start_date!='' and [dbo].[order_].order_id = [dbo].[warranty].order_id and [dbo].[order_].customer_id = [dbo].[customer].customer_id and [dbo].[customer].customer_rank=:rank) as nuova group by nuova.durata order by num desc) as tabella");
+        query.setParameter("rank", rank);
+        return query.getResultList();
+    }
+
+
     @PostMapping("/getTopOptionalByModelId")
     public List<String> getTopOptionalByModelId(@RequestBody String body) {
         JSONObject jsonObject = new JSONObject(body);
