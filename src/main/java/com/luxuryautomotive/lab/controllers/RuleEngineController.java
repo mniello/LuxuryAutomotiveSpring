@@ -1,6 +1,9 @@
 package com.luxuryautomotive.lab.controllers;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,18 +39,16 @@ public class RuleEngineController {
     NbaController nbaController;
 
     @PostMapping("/getLastWarrantyByCustomer")
-    public Warranty getLastWarranty(@RequestBody String body) {
+    public Integer getLastWarranty(@RequestBody String body) {
         JSONObject jsonObject = new JSONObject(body);
 		String customer_id = jsonObject.getString("customer_id");
-        //String order_type = "WARRANTY";
 		Query query = entityManager.createNamedQuery("getLastWarrantyByCustomer");
 		query.setParameter("id", customer_id);
-        //query.setParameter("order_type", order_type);
         List order = query.getResultList();
         Warranty warranty = (Warranty) order.get(0);
-        //jsonObject = new JSONObject();
-        //jsonObject.put("order_id", order.get(0));
-        return warranty;
+        Integer month = (int) ChronoUnit.MONTHS.between(YearMonth.from(warranty.getStart_date().toLocalDate()), warranty.getEnd_date().toLocalDate());
+        System.out.println("DURATA MESI"+month);
+        return month;
 		
     }
 

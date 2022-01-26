@@ -41,10 +41,10 @@ class LuxuryAutomotiveApplicationTests {
 		arrayList.add("PUTTANA EVA");
 		JSONArray array = new JSONArray(arrayList);
 		jsonObject.put("optionals", array);
-		//jsonObject.put("customer_id", "94");
+		jsonObject.put("customer_id", "1");
 		//jsonObject.put("status","ACTIVE");
 		//jsonObject.put("category","NEW CAR SALE");
-		//System.out.println(nbaController.finalizeNbaWarranty(jsonObject.toString()));
+		//System.out.println(ruleEngineController.getLastWarranty(jsonObject.toString()));
 	}
 
 
