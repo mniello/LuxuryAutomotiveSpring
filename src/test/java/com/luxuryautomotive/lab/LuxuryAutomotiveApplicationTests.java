@@ -33,9 +33,9 @@ class LuxuryAutomotiveApplicationTests {
 	@Test
 	void contextLoads() throws JSONException {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("nba_id", "1");
+		jsonObject.put("nba_id", "101");
 		jsonObject.put("payment_type","CREDIT CARD");
-		jsonObject.put("vin", "3GYT4LEF5CG111783");
+		jsonObject.put("month", "18");
 		ArrayList<String> arrayList = new ArrayList<>(){};
 		arrayList.add("KEYLESS SYSTEM");
 		arrayList.add("PUTTANA EVA");
@@ -44,7 +44,7 @@ class LuxuryAutomotiveApplicationTests {
 		//jsonObject.put("customer_id", "94");
 		//jsonObject.put("status","ACTIVE");
 		//jsonObject.put("category","NEW CAR SALE");
-		//System.out.println(nbaController.finalizeNbaWithOptional(jsonObject.toString()));
+		//System.out.println(nbaController.finalizeNbaWarranty(jsonObject.toString()));
 	}
 
 

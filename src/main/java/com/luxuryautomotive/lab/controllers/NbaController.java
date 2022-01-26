@@ -2,6 +2,7 @@ package com.luxuryautomotive.lab.controllers;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -21,6 +22,7 @@ import com.luxuryautomotive.lab.domain.Nba;
 import com.luxuryautomotive.lab.domain.Optional;
 import com.luxuryautomotive.lab.domain.Order;
 import com.luxuryautomotive.lab.domain.Vehicle;
+import com.luxuryautomotive.lab.domain.Warranty;
 import com.luxuryautomotive.lab.repositories.NbaRepository;
 
 @RestController
@@ -40,6 +42,9 @@ public class NbaController {
 
 	@Autowired
     OptionalController optionalController;
+
+	@Autowired
+	WarrantyController warrantyController;
 	
 	
 	@PostMapping("/getNbaByDealer")
@@ -190,5 +195,62 @@ public class NbaController {
         }
         return true;
     }
+
+	@Transactional
+	@PostMapping("/rejectedNba")
+	public boolean rejectedNba(@RequestBody String body) {
+		JSONObject jsonObject = new JSONObject(body);
+        String nba_id = jsonObject.getString("nba_id");
+        JSONObject jsonObject2 = new JSONObject();
+        jsonObject2.put("nba_id", nba_id);
+        Nba nba = getNbaById(jsonObject2.toString());
+		if(nba==null|| nba.getStatus().equals("FINALIZED")) {
+			return false;
+		}
+		nba.setStatus("REJECTED");
+		nba.setClosure_date(new Date(System.currentTimeMillis()));
+		jsonObject2 = new JSONObject();
+        jsonObject2.put("order_id",nba.getOrder_id());
+        Order order = orderController.getOrderById(jsonObject2.toString());
+		if(order.getDate()==null) {
+			order.setDate(new Date(System.currentTimeMillis()));
+		}
+
+		return true;
+	}
+
+	@Transactional
+	@PostMapping("/finalizeNbaWarranty")
+	public boolean finalizeNbaWarranty(@RequestBody String body) {
+		JSONObject jsonObject = new JSONObject(body);
+        String nba_id = jsonObject.getString("nba_id");
+        JSONObject jsonObject2 = new JSONObject();
+        jsonObject2.put("nba_id", nba_id);
+        Nba nba = getNbaById(jsonObject2.toString());
+		if(nba==null|| nba.getStatus().equals("FINALIZED")) {
+			return false;
+		}
+		nba.setStatus("FINALIZED");
+		nba.setClosure_date(new Date(System.currentTimeMillis()));
+		jsonObject2 = new JSONObject();
+        jsonObject2.put("order_id",nba.getOrder_id());
+        Order order = orderController.getOrderById(jsonObject2.toString());
+        String paymentType = jsonObject.getString("payment_type");
+		order.setPayment_type(paymentType);
+		if(order.getDate()==null) {
+			order.setDate(new Date(System.currentTimeMillis()));
+		}
+		
+		Warranty warranty = warrantyController.getWarrantyByOrder(jsonObject2.toString()).get(0);
+		warranty.setStart_date(new Date(System.currentTimeMillis()));
+		Date end_date = new Date(System.currentTimeMillis());
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(end_date);
+		int month = jsonObject.getInt("month");
+		calendar.add(Calendar.MONTH,month);
+		end_date = new Date(calendar.getTimeInMillis());
+		warranty.setEnd_date(end_date);
+		return true;
+	}
 	
 }
